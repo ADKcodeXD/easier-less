@@ -14,12 +14,24 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "less.helloWorld",
-        "title": "Hello World"
+    "commands": [],
+    "configuration": {
+      "type": "object",
+      "title": "easier-less插件配置",
+      "properties": {
+        "less.files": {
+          "type": "array",
+          "scope": "window",
+          "description": "less文件"
+        },
+        "less.notice": {
+          "type": "boolean",
+          "scope": "window",
+          "default": true,
+          "description": "是否开启通知"
+        }
       }
-    ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
