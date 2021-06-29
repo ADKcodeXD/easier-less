@@ -35,7 +35,7 @@ export async function getStore(mixinsPaths: string[]) {
       variablesMap = (data.match(/^@(?!import).*:.*/gm) || []).reduce(
         (pre: Store, cur: string) => {
           const arr: string[] = cur.split(/:\s*/);
-          pre[arr[0]] = arr[1].replace(';', '');
+          pre[arr[0]] = arr[1].replace(/;?\s+\/\/.*/g, '').trim();
           return pre;
         },
         {}

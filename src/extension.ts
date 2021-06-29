@@ -22,7 +22,7 @@ export async function activate(context: vscode.ExtensionContext) {
     // console.log('111 初始化');
     unRegisters.forEach((unRegister) => unRegister.dispose());
     const [store, variableStore] = await getStore(mixinsPaths);
-    // console.log('111 store', store);
+    console.log('111 store', store);
     registerHover(context, store);
     registerDefinition(context, mixinsPaths);
     registerAutoComplete(context, variableStore);

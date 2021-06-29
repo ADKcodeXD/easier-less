@@ -15,20 +15,18 @@ export default function (
 
     // 只截取到光标位置为止，防止一些特殊情况
     const lineText = line.text.substring(0, position.character);
-    console.log(
-      '111 lineText: ',
-      lineText,
-      variableStore,
-      /.+?@$/g.test(lineText)
-    );
 
     // 简单匹配，只要当前光标前的字符串为 @ 都自动带出所有的依赖
     if (/.+?@$/g.test(lineText)) {
       return Object.entries(variableStore).map(([key, val]) => {
-        return new vscode.CompletionItem(
-          `${key} (${val})`,
-          vscode.CompletionItemKind.Field
-        );
+        const completionItem = new vscode.CompletionItem(`${key}`);
+        completionItem.detail = val;
+        if (/^#/.test(val)) {
+          completionItem.kind = vscode.CompletionItemKind.Color;
+        } else {
+          completionItem.kind = vscode.CompletionItemKind.Variable;
+        }
+        return completionItem;
       });
     }
   }
