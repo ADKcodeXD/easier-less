@@ -25,7 +25,7 @@ export default function (
         //   title: 'format',
         //   command: 'editor.action.formatDocument',
         // };
-        if (/^#/.test(val)) {
+        if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(val)) {
           completionItem.kind = vscode.CompletionItemKind.Color;
         } else {
           completionItem.kind = vscode.CompletionItemKind.Variable;
