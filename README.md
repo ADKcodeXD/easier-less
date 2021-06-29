@@ -1,4 +1,4 @@
-# less README
+# eaiser-less
 
 一个方便使用 less 的 vscode 插件
 
