@@ -17,10 +17,14 @@ export default function (
     const lineText = line.text.substring(0, position.character);
 
     // 简单匹配，只要当前光标前的字符串为 @ 都自动带出所有的依赖
-    if (/.+?@$/g.test(lineText)) {
+    if (/@$/g.test(lineText)) {
       return Object.entries(variableStore).map(([key, val]) => {
         const completionItem = new vscode.CompletionItem(`${key}`);
         completionItem.detail = val;
+        // completionItem.command = {
+        //   title: 'format',
+        //   command: 'editor.action.formatDocument',
+        // };
         if (/^#/.test(val)) {
           completionItem.kind = vscode.CompletionItemKind.Color;
         } else {
