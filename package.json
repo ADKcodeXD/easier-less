@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "publisher": "onlyadaydreamer",
   "repository": "https://github.com/onlyadaydreamer/easier-less",
+  "icon": "images/less.png",
   "engines": {
     "vscode": "^1.46.0"
   },
