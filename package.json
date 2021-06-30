@@ -1,8 +1,8 @@
 {
   "name": "less",
-  "displayName": "eaiser-less",
+  "displayName": "easier-less",
   "description": "一个简单方便使用less的vscode插件",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "onlyadaydreamer",
   "repository": "https://github.com/onlyadaydreamer/easier-less",
   "icon": "images/less.png",
