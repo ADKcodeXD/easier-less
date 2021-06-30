@@ -12,9 +12,11 @@
 
 ## 当前版本提供的功能
 
-1. 在 less 文件中键入 `@` 时显示预输入的所有变量
+1. 在 less 文件中键入 `@` `.`时显示预输入的所有变量
 
 ![](http://assets.onlyadaydreamer.top/vscode-plugin-gifs/autocompletefor@.gif)
+
+![](http://assets.onlyadaydreamer.top/vscode-plugin-gifs/autocompletefordot.gif)
 
 2. 鼠标悬浮在变量上显示其值
 
@@ -28,4 +30,5 @@
 
 ## todo
 
-鼠标悬浮在 less color 变量时显示颜色, 这个没有找到方法，有路子的同学请指导指导 🙏🙏🙏~~~
+1. 鼠标悬浮在 less color 变量时显示颜色, 这个没有找到方法，有路子的同学请指导指导 🙏🙏🙏~~~
+2. 使跳转的位置更加精确
