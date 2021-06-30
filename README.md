@@ -14,19 +14,19 @@
 
 1. 在 less 文件中键入 `@` `.`时显示预输入的所有变量
 
-![](http://assets.onlyadaydreamer.top/vscode-plugin-gifs/autocompletefor@.gif)
+![](https://assets.onlyadaydreamer.top/autocompletefor%40.gif)
 
-![](http://assets.onlyadaydreamer.top/vscode-plugin-gifs/autocompletefordot.gif)
+![](https://assets.onlyadaydreamer.top/autocompletefordot.gif)
 
 2. 鼠标悬浮在变量上显示其值
 
-![](http://assets.onlyadaydreamer.top/vscode-plugin-gifs/hover.gif)
+![](https://assets.onlyadaydreamer.top/hover.gif)
 
 3. 对于 less 变量，`cmd` 或 `ctrl` 显示下划线点击可以跳转到变量所在文件
 
-![](http://assets.onlyadaydreamer.top/vscode-plugin-gifs/jump2mixin.gif)
+![](https://assets.onlyadaydreamer.top/jump2mixin.gif)
 
-![](http://assets.onlyadaydreamer.top/vscode-plugin-gifs/jump2mixin2.gif)
+![](https://assets.onlyadaydreamer.top/jump2mixin2.gif)
 
 ## todo
 
