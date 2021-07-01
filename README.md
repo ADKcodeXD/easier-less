@@ -1,4 +1,4 @@
-# eaiser-less ![](https://img.shields.io/badge/vscode%20plugin-0.0.4-brightgreen)
+# eaiser-less ![](https://img.shields.io/badge/vscode%20plugin-0.0.5-brightgreen)
 
 🖖 一个方便使用 less 的 vscode 插件
 
