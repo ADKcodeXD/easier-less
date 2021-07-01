@@ -6,24 +6,24 @@ import registerDefinition from './registerDefinition';
 import { getMixinsPaths } from './getMixins';
 import { getStore } from './getStore';
 import registerAutoComplete from './registerAutoComplete';
-import { watch } from './watcher';
+import { watchMixins, watchConfig } from './watcher';
 
 export const unRegisters: vscode.Disposable[] = [];
 
 export async function activate(context: vscode.ExtensionContext) {
-  console.log('-----eaiser-less 插件已激活-----');
-  const [mixinsPaths] = await getMixinsPaths();
-  // console.log('111 mixinsPaths', mixinsPaths);
-  watch(mixinsPaths, init);
-
+  console.log('-----easier-less 插件已激活-----');
   init();
+  watchConfig(init);
 
   async function init() {
-    // console.log('111 初始化');
     unRegisters.forEach((unRegister) => unRegister.dispose());
+
+    const [mixinsPaths] = await getMixinsPaths();
+    // console.log('111 mixinsPaths', mixinsPaths);
+    watchMixins(mixinsPaths, init);
     const [store, variableStore, methodsStore] = await getStore(mixinsPaths);
     console.log('111 store', store);
-    registerHover(context, store);
+    registerHover(context, store, mixinsPaths);
     registerDefinition(context, mixinsPaths);
     registerAutoComplete(context, variableStore, methodsStore);
   }
