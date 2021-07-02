@@ -5,7 +5,7 @@ import { welcome } from './welcome';
 import registerHover from './registerHover';
 import registerDefinition from './registerDefinition';
 import { getMixinsPaths } from './getMixins';
-import { getStore } from './getStore';
+import { getStore, originalData } from './getStore';
 import registerAutoComplete from './registerAutoComplete';
 import { watchMixins, watchConfig, watchers } from './watcher';
 
@@ -21,6 +21,7 @@ export async function activate(context: vscode.ExtensionContext) {
   async function init() {
     unRegisters.forEach((unRegister) => unRegister.dispose());
     watchers.forEach((watcher) => watcher.dispose());
+    originalData.length = 0;
 
     const mixinsPaths = getMixinsPaths();
     watchMixins(mixinsPaths, init);

@@ -16,7 +16,7 @@ export function welcome() {
   if (files?.length) {
     vscode.window
       .showInformationMessage(
-        '已经选择less变量所在文件, 是否更新?',
+        '已经选择mixin文件, 是否更新?',
         '更新',
         '不再通知'
       )
@@ -38,10 +38,13 @@ export function welcome() {
                       }
                     });
                   }
-                  vscode.workspace
-                    .getConfiguration()
-                    .update('less.files', mixinsPaths, true);
-                  vscode.window.showInformationMessage('设置成功!');
+
+                  if (mixinsPaths.length) {
+                    vscode.workspace
+                      .getConfiguration()
+                      .update('less.files', mixinsPaths, true);
+                    vscode.window.showInformationMessage('设置成功!');
+                  }
                   // return resolve([mixinsPaths, true]);
                 });
               break;
@@ -62,7 +65,7 @@ export function welcome() {
       );
   } else {
     vscode.window
-      .showInformationMessage('初次使用，请选择less变量所在文件', '选择')
+      .showInformationMessage('初次使用，请选择mixin文件', '选择')
       .then(
         (item) => {
           if (item === '选择') {
@@ -80,10 +83,10 @@ export function welcome() {
                     }
                   });
                 }
-                vscode.workspace
-                  .getConfiguration()
-                  .update('less.files', mixinsPaths, true);
                 if (mixinsPaths.length) {
+                  vscode.workspace
+                    .getConfiguration()
+                    .update('less.files', mixinsPaths, true);
                   vscode.window.showInformationMessage('设置成功!');
                 }
                 // return resolve([mixinsPaths, true]);

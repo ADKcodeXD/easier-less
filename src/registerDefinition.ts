@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 import fs from 'fs';
 import { unRegisters } from './extension';
 import { originalData } from './getStore';
-import { url } from 'inspector';
 
 export default function (
   context: vscode.ExtensionContext,
@@ -23,7 +22,7 @@ export default function (
 
     originalData.every((item) => {
       const [path, content] = item;
-      // console.log('111', word, content.indexOf(word), isMethod, isVariable);
+      console.log(111, content.indexOf(word), mixinsPaths);
       if (
         !mixinsPaths.includes(fileName) &&
         content.indexOf(word) !== -1 &&
