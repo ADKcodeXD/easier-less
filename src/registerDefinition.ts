@@ -20,7 +20,7 @@ export default function (
     const isMethod = /\.(.*)/i.test(word);
     const isVariable = /^@(?!import)\w+/i.test(word);
 
-    originalData.every((item) => {
+    originalData.forEach((item) => {
       const [path, content] = item;
       console.log(111, content.indexOf(word), mixinsPaths);
       if (
@@ -37,10 +37,7 @@ export default function (
             new vscode.Position(lines ? lines : 0, 0)
           )
         );
-        return false;
       }
-      // 注意要返回true
-      return true;
     });
 
     return uris;
