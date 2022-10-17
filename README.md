@@ -1,6 +1,8 @@
-# easier-less ![](https://img.shields.io/badge/vscode%20plugin-0.0.8-brightgreen)
+# easier-less-forvue ![](https://img.shields.io/badge/vscode%20plugin-0.0.8-brightgreen)
 
 🖖 一个方便使用 less 的 vscode 插件
+fork 自 https://github.com/ohguaiguai/easier-less
+对原插件做了vue的支持
 
 ## 使用
 

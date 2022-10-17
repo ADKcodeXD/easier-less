@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import fs from 'fs';
 import { unRegisters } from './extension';
 import { originalData } from './getStore';
 
@@ -14,7 +13,6 @@ export default function (
   ) {
     let uris: vscode.Location[] = [];
     const fileName = document.fileName;
-
     const word = document.getText(document.getWordRangeAtPosition(position));
     // 和 hover 中的判断有所区分
     const isMethod = /\.(.*)/i.test(word);
@@ -42,7 +40,7 @@ export default function (
 
     return uris;
   }
-  const unRegister = vscode.languages.registerDefinitionProvider(['less'], {
+  const unRegister = vscode.languages.registerDefinitionProvider('less', {
     provideDefinition,
   });
   unRegisters.push(unRegister);

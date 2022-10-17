@@ -1,6 +1,6 @@
-import * as vscode from 'vscode';
-import { Store } from './getStore';
-import { unRegisters } from './extension';
+import * as vscode from "vscode";
+import { Store } from "./getStore";
+import { unRegisters } from "./extension";
 
 export default function (
   context: vscode.ExtensionContext,
@@ -28,11 +28,11 @@ export default function (
       return Object.entries(variableStore).map(([key, val]) => {
         const completionItem = new vscode.CompletionItem(`${key}`);
         completionItem.detail = val;
-        // completionItem.command = {
-        //   title: 'format',
-        //   command: 'editor.action.formatDocument',
-        // };
-        if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(val)) {
+        if (
+          /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(val) ||
+          key.indexOf("Color") ||
+          key.indexOf("color")
+        ) {
           completionItem.kind = vscode.CompletionItemKind.Color;
         } else {
           completionItem.kind = vscode.CompletionItemKind.Variable;
@@ -54,16 +54,14 @@ export default function (
     token: vscode.CancellationToken
   ) {
     const line = document.lineAt(position);
-
     // 只截取到光标位置为止，防止一些特殊情况
     const lineText = line.text.substring(0, position.character);
-
     // 简单匹配，只要当前光标前的字符串为 . 都自动带出所有的依赖
     if (/\.$/g.test(lineText)) {
       return Object.entries(methodsStore).map(([key, val]) => {
         const completionItem = new vscode.CompletionItem(`${key}`);
         completionItem.detail = val;
-        completionItem.kind = vscode.CompletionItemKind.Variable;
+        completionItem.kind = vscode.CompletionItemKind.Method;
         return completionItem;
       });
     }
@@ -79,23 +77,43 @@ export default function (
   }
 
   const unRegister1 = vscode.languages.registerCompletionItemProvider(
-    'less',
+    "less",
     {
       provideCompletionItems: provideCompletionItems1,
       resolveCompletionItem,
     },
-    '@'
+    "@"
   );
   const unRegister2 = vscode.languages.registerCompletionItemProvider(
-    'less',
+    "less",
     {
       provideCompletionItems: provideCompletionItems2,
       resolveCompletionItem,
     },
-    '.'
+    "."
+  );
+  const unRegister3 = vscode.languages.registerCompletionItemProvider(
+    "vue",
+    {
+      provideCompletionItems: provideCompletionItems1,
+      resolveCompletionItem,
+    },
+    "@"
+  );
+  const unRegister4 = vscode.languages.registerCompletionItemProvider(
+    "vue",
+    {
+      provideCompletionItems: provideCompletionItems2,
+      resolveCompletionItem,
+    },
+    "."
   );
   unRegisters.push(unRegister1);
   unRegisters.push(unRegister2);
+  unRegisters.push(unRegister3);
+  unRegisters.push(unRegister4);
   context.subscriptions.push(unRegister1);
   context.subscriptions.push(unRegister2);
+  context.subscriptions.push(unRegister3);
+  context.subscriptions.push(unRegister4);
 }

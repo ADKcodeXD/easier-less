@@ -44,6 +44,6 @@ export function getMixinsPaths() {
 
   const files =
     vscode.workspace.getConfiguration().get<Array<string>>('less.files') || [];
-
+  console.log(files);
   return files;
 }

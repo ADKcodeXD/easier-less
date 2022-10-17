@@ -12,15 +12,9 @@ export function watchMixins(mixinsPaths: string[], callback: () => void) {
       false
     );
     watcher.onDidChange((e) => {
-      //   vscode.window.showInformationMessage(
-      //     '检测到less文件发生变化，请重启vscode!'
-      //   );
       callback();
     });
     watcher.onDidDelete((e) => {
-      //   vscode.window.showInformationMessage(
-      //     '检测到less文件被删除，请重启vscode!'
-      //   );
       callback();
     });
     watchers.push(watcher);

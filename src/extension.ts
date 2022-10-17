@@ -13,7 +13,6 @@ export const unRegisters: vscode.Disposable[] = [];
 
 export async function activate(context: vscode.ExtensionContext) {
   console.log('-----easier-less 插件已激活-----');
-
   welcome();
   init();
   watchConfig(init);
@@ -22,11 +21,9 @@ export async function activate(context: vscode.ExtensionContext) {
     unRegisters.forEach((unRegister) => unRegister.dispose());
     watchers.forEach((watcher) => watcher.dispose());
     originalData.length = 0;
-
     const mixinsPaths = getMixinsPaths();
     watchMixins(mixinsPaths, init);
     const [store, variableStore, methodsStore] = await getStore(mixinsPaths);
-    console.log('111 store', store);
     registerHover(context, store, mixinsPaths);
     registerDefinition(context, mixinsPaths);
     registerAutoComplete(context, variableStore, methodsStore);

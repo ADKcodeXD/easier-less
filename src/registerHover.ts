@@ -21,8 +21,7 @@ export default function (
     const isVariable = /^@(?!import)\w+/i.test(word);
 
     if ((isVariable || isMethod) && !mixinsPaths.includes(fileName)) {
-      // console.log('111', '生效了', word);
-
+      console.log('111', '生效了', word);
       return new vscode.Hover({
         language: 'less',
         value: `${word}: ${store[word] || '未找到定义'}`,
@@ -33,23 +32,6 @@ export default function (
   const unRegister = vscode.languages.registerHoverProvider('less', {
     provideHover,
   });
-
-  // const unRegister = vscode.languages.registerColorProvider('less', {
-  //   provideDocumentColors(document, token) {
-  //     console.log('1111', 'ahhahah');
-
-  //     return [
-  //       new vscode.ColorInformation(
-  //         new vscode.Range(0, 20, 0, 10),
-  //         new vscode.Color(255, 243, 122, 1)
-  //       ),
-  //     ];
-  //   },
-  //   provideColorPresentations() {
-  //     return [new vscode.ColorPresentation('.k-font-medium')];
-  //   },
-  // });
-
   unRegisters.push(unRegister);
   context.subscriptions.push(unRegister);
 }

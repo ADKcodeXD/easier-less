@@ -89,7 +89,6 @@ export function welcome() {
                     .update('less.files', mixinsPaths, true);
                   vscode.window.showInformationMessage('设置成功!');
                 }
-                // return resolve([mixinsPaths, true]);
               });
           }
         },
